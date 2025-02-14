@@ -39,10 +39,6 @@ func (v *Validator) ValidateStruct(s interface{}) []Error {
 	return v.ErrorDetails
 }
 
-func validateTime(fl validator.FieldLevel) bool {
-	return false
-}
-
 func validateConversations(fl validator.FieldLevel) bool {
 
 	data := fl.Field().Interface()
