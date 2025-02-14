@@ -17,10 +17,8 @@ func InitRouter() *Router {
 }
 
 func (receiver *Router) Install(engine *gin.Engine) {
-	//engine.Use(c.Options)
 	apis := engine.Group("/api/v1/translation")
 	{
-		//apis.Use(c.checkHeaders)
 		apis.POST("", receiver.httpRequestHandler.Translate)
 	}
 }
