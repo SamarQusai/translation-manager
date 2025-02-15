@@ -3,6 +3,7 @@ package pkg
 import (
 	"github.com/go-playground/validator/v10"
 	"strings"
+	"time"
 	"translationManager/internal/model"
 )
 
@@ -18,7 +19,6 @@ type Error struct {
 func (v *Validator) ValidateStruct(s interface{}) []Error {
 	validate := validator.New()
 	validate.RegisterValidation("validateConversations", validateConversations)
-	validate.RegisterValidation("validateTime", validateTime)
 
 	err := validate.Struct(s)
 	if err != nil {
@@ -54,10 +54,23 @@ func validateConversations(fl validator.FieldLevel) bool {
 			return false
 		}
 
+		if !isValidTimeFormat(conversation.Time) {
+			return false
+		}
+
 		if strings.TrimSpace(conversation.Sentence) == "" {
 			return false
 		}
 	}
 
+	return true
+}
+
+func isValidTimeFormat(timeString string) bool {
+	const layout = "15:04:05"
+	_, err := time.Parse(layout, timeString)
+	if err != nil {
+		return false
+	}
 	return true
 }

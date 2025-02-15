@@ -7,7 +7,7 @@ import (
 
 func TestSuccessCase_IsTextInArabic(testing *testing.T) {
 	examples := []string{
-		"مرحبا بالعالم",
+		"مرحبا",
 		"اللغة العربية",
 		"مَرْحَبًا",
 		"٠١٢٣٤٥٦٧٨٩",

@@ -49,3 +49,33 @@ func TestFailureEmptyNameCase_ValidateStruct(testing *testing.T) {
 	assert.Len(testing, errors, 1)
 	assert.Equal(testing, errors[0].Field, "Dialogue")
 }
+
+func TestFailureInvalidTimeCaseOne_ValidateStruct(testing *testing.T) {
+
+	dialogues := make([]model.Dialogue, 0)
+	dialogues = append(dialogues, model.Dialogue{
+		Speaker:  "John",
+		Time:     "25:00:04",
+		Sentence: "Good morning",
+	})
+	request := model.DialogueRequest{Dialogue: dialogues}
+	validator := Validator{}
+	errors := validator.ValidateStruct(request)
+	assert.Len(testing, errors, 1)
+	assert.Equal(testing, errors[0].Field, "Dialogue")
+}
+
+func TestFailureInvalidTimeCaseTwo_ValidateStruct(testing *testing.T) {
+
+	dialogues := make([]model.Dialogue, 0)
+	dialogues = append(dialogues, model.Dialogue{
+		Speaker:  "John",
+		Time:     "25004",
+		Sentence: "Good morning",
+	})
+	request := model.DialogueRequest{Dialogue: dialogues}
+	validator := Validator{}
+	errors := validator.ValidateStruct(request)
+	assert.Len(testing, errors, 1)
+	assert.Equal(testing, errors[0].Field, "Dialogue")
+}
