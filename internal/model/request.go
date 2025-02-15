@@ -6,6 +6,6 @@ type DialogueRequest struct {
 
 type Dialogue struct {
 	Speaker  string `json:"speaker" validate:"required"`
-	Time     string `json:"time" validate:"required,validateTime"`
+	Time     string `json:"time" validate:"required"`
 	Sentence string `json:"sentence" validate:"required"`
 }

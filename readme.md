@@ -19,9 +19,12 @@ An API endpoint that translate arabic sentences in dialogue to english using Ope
 - **Manual**
     - Install Golang.
     - Run `cd transaltion_manager/`
+    - Add your `.env` file with the required env variables.
     - Run `go run main.go`
 - **Docker**
-  - 
+  - Add your `.env` file with the required env variables.
+  - Run `docker build -t translation_manager_go .`
+  - Run `docker run -p 8080:8080 translation_manager_go`
   
 ## Translate endpoint
 - **cURL**
