@@ -12,7 +12,7 @@ An API endpoint that translate arabic sentences in dialogue to english using Ope
 - **Internal.handler**: Request handler. e.g.HTTP, gRPC.
 - **Internal.model**: Contains request and response models.
 - **Internal.service**: Service that responsible for selecting the translation gateway and passing the request to it.
-- **Internal.pkg**: Shared packages e.g.request validator.
+- **Internal.utilities**: Centralized place for storing utility functions e.g.request validator.
 
 
 ## How to run

@@ -2,7 +2,7 @@ package service
 
 import (
 	"translationManager/internal/model"
-	"translationManager/internal/utils"
+	"translationManager/internal/utilities"
 )
 
 func (receiver *Service) Translate(request model.DialogueRequest) (*model.DialogueResponse, error) {
@@ -23,7 +23,7 @@ func (receiver *Service) Translate(request model.DialogueRequest) (*model.Dialog
 func prepareToBeTranslatedArray(request model.DialogueRequest) []string {
 	toBeTranslated := make([]string, 0)
 	for _, dialogue := range request.Dialogue {
-		if utils.IsTextInArabic(dialogue.Sentence) {
+		if utilities.IsTextInArabic(dialogue.Sentence) {
 			toBeTranslated = append(toBeTranslated, dialogue.Sentence)
 		}
 	}

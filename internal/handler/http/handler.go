@@ -5,7 +5,7 @@ import (
 	logger "github.com/sirupsen/logrus"
 	"net/http"
 	"translationManager/internal/model"
-	"translationManager/internal/pkg"
+	"translationManager/internal/utilities"
 )
 
 func (receiver *Handler) Translate(c *gin.Context) {
@@ -17,7 +17,7 @@ func (receiver *Handler) Translate(c *gin.Context) {
 		return
 	}
 
-	validator := pkg.Validator{}
+	validator := utilities.Validator{}
 	errors := validator.ValidateStruct(request)
 	if len(errors) > 0 {
 		model.BuildHttpResponse(c, http.StatusBadRequest, model.InvalidRequestMessage, errors)
